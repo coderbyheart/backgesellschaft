@@ -7,31 +7,36 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 </head>
 <body>
-
+<div id="fb-root"></div>
 <div class="container">
     <header class="header">
         <h1 class="text-muted">{{ org }}</h1>
     </header>
 {% block content %}
 {% endblock %}
-    {#
     <footer class="row marketing">
         <div class="col-lg-6">
-            <h2>Facebook</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+            <h2>Folge uns auf Facebook</h2>
+            <div class="fb-like-box" data-href="https://www.facebook.com/Backgesellschaft" data-width="292" data-height="300" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
         </div>
 
         <div class="col-lg-6">
-            <h2>Subheading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+            <h2>Folge uns auf Twitter</h2>
+            <a class="twitter-timeline" href="https://twitter.com/backgesellen" data-widget-id="384039603444793344">Tweets von @backgesellen</a>
         </div>
     </footer>
-    #}
 </div> <!-- /container -->
-
 {% block javascript %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/de_DE/all.js#xfbml=1&appId=481690871929626";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 {% endblock %}
 </body>
 </html>
