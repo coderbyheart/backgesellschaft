@@ -58,9 +58,6 @@ class Mail
             ->setTo($command->email)
             ->setBody($body);
 
-        echo $body;
-        echo $subject;
-
         $this->mailer->send($message);
     }
 

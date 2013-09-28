@@ -55,7 +55,7 @@ class Newsletter
         $sr                   = new SecureRandom();
         $key                  = sha1($sr->nextBytes(256), false);
         $updateCommand->data  = array('confirmationKey' => $key);
-        // $this->commandBus->handle($updateCommand);
+        $this->commandBus->handle($updateCommand);
 
         $emailCommand           = new SendTemplateMailCommand();
         $emailCommand->email    = $command->subscription->getEmail();
