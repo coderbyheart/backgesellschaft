@@ -1,24 +1,31 @@
 <?xml version="1.0" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="Backgesellschaft.backend.newsletterservice.class">Backgesellschaft\BackendBundle\Service\Newsletter</parameter>
-        <parameter key="Backgesellschaft.backend.mailservice.class">Backgesellschaft\BackendBundle\Service\Mail</parameter>
+        <parameter key="backgesellschaft.backend.newsletterservice.class">Backgesellschaft\BackendBundle\Service\Newsletter</parameter>
+        <parameter key="backgesellschaft.backend.mailservice.class">Backgesellschaft\BackendBundle\Service\Mail</parameter>
+        <parameter key="backgesellschaft.backend.flowdockservice.class">Backgesellschaft\BackendBundle\Service\Flowdock</parameter>
     </parameters>
     <services>
-    <service id="Backgesellschaft.backend.newsletterservice" class="%Backgesellschaft.backend.newsletterservice.class%">
-        <argument type="service" id="command_bus"/>
-        <argument type="service" id="router"/>
-        <tag name="lite_cqrs.command_handler"/>
-    </service>
-    <service id="Backgesellschaft.backend.mailservice" class="%Backgesellschaft.backend.mailservice.class%">
-        <argument type="service" id="mailer"/>
-        <argument>%mail_from_email%</argument>
-        <argument>%mail_from_name%</argument>
-        <argument>%locale%</argument>
-        <tag name="lite_cqrs.command_handler"/>
-    </service>
-</services>
+        <service id="backgesellschaft.backend.newsletterservice"
+                 class="%backgesellschaft.backend.newsletterservice.class%">
+            <argument type="service" id="command_bus"/>
+            <argument type="service" id="litecqrs.event_message_bus"/>
+            <argument type="service" id="router"/>
+            <tag name="lite_cqrs.command_handler"/>
+        </service>
+        <service id="backgesellschaft.backend.mailservice" class="%backgesellschaft.backend.mailservice.class%">
+            <argument type="service" id="mailer"/>
+            <argument>%mail_from_email%</argument>
+            <argument>%mail_from_name%</argument>
+            <argument>%locale%</argument>
+            <tag name="lite_cqrs.command_handler"/>
+        </service>
+        <service id="backgesellschaft.backend.flowdockservice" class="%backgesellschaft.backend.flowdockservice.class%">
+            <argument>%flowdock_api_key%</argument>
+            <tag name="lite_cqrs.event_handler"/>
+        </service>
+    </services>
 </container>

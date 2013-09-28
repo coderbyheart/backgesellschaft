@@ -7,11 +7,13 @@
 
 namespace Backgesellschaft\BackendBundle\Service;
 
+use Backgesellschaft\BackendBundle\Event\Newsletter\ActivatedEvent;
 use Backgesellschaft\BackendBundle\Service\Mail\SendTemplateMailCommand;
 use Backgesellschaft\BackendBundle\Service\Newsletter\ActivateCommand;
 use Backgesellschaft\BackendBundle\Service\Newsletter\SendConfirmationMailCommand;
 use Backgesellschaft\BackendBundle\Service\Newsletter\SubscribeCommand;
 use LiteCQRS\Bus\CommandBus;
+use LiteCQRS\Bus\EventMessageBus;
 use LiteCQRS\Plugin\CRUD\Model\Commands\CreateResourceCommand;
 use LiteCQRS\Plugin\CRUD\Model\Commands\UpdateResourceCommand;
 use Symfony\Component\Routing\RouterInterface;
@@ -30,13 +32,22 @@ class Newsletter
     private $router;
 
     /**
+     * @var \LiteCQRS\Bus\EventMessageBus
+     */
+    private $eventMessageBus;
+
+    /**
+     * Constructor.
+     *
      * @param CommandBus      $commandBus
+     * @param EventMessageBus $eventMessageBus;
      * @param RouterInterface $router
      */
-    public function __construct(CommandBus $commandBus, RouterInterface $router)
+    public function __construct(CommandBus $commandBus, EventMessageBus $eventMessageBus, RouterInterface $router)
     {
-        $this->commandBus = $commandBus;
-        $this->router     = $router;
+        $this->commandBus      = $commandBus;
+        $this->eventMessageBus = $eventMessageBus;
+        $this->router          = $router;
     }
 
     public function subscribe(SubscribeCommand $command)
@@ -74,5 +85,8 @@ class Newsletter
         $updateCommand->id    = $command->subscription->getId();
         $updateCommand->data  = array('confirmed' => 1);
         $this->commandBus->handle($updateCommand);
+        $event               = new ActivatedEvent();
+        $event->subscription = $command->subscription;
+        $this->eventMessageBus->publish($event);
     }
 }

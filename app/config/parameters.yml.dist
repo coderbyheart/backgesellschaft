@@ -26,3 +26,5 @@ parameters:
 
     org: Backgesellschaft
     claim: Die Mischung macht's!
+
+    flowdock_api_key: 4075c7aa05a5258262f92e7431bf472b

@@ -19,6 +19,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\GoneHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -71,13 +72,13 @@ class NewsletterController
             if ($subscription->isDefined()) {
                 return new RedirectResponse($this->router->generate('bg_newsletter_already_subscribed'));
             }
-            $command                 = new SubscribeCommand();
-            $command->email          = $formData->email;
+            $command        = new SubscribeCommand();
+            $command->email = $formData->email;
             $this->commandBus->handle($command);
             return new RedirectResponse($this->router->generate('bg_newsletter_ok'));
         }
         return array(
-            'form'     => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -86,6 +87,9 @@ class NewsletterController
         $subscription = $this->repo->getSubscriptionByIdAndKey($id, $key);
         if ($subscription->isEmpty()) {
             throw new NotFoundHttpException('Unknown subscription.');
+        }
+        if ($subscription->get()->getConfirmed()) {
+            throw new GoneHttpException('Already confirmed.');
         }
         $command               = new ActivateCommand();
         $command->subscription = $subscription->get();
