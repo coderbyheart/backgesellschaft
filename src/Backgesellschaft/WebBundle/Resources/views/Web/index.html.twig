@@ -1,0 +1,22 @@
+{% extends "BackgesellschaftWebBundle::page.html.twig" %}
+{% block content %}
+    <article class="jumbotron">
+        <h1>{{ claim }}</h1>
+
+        <p class="lead">Wir <em>backen</em> da an was …</p>
+
+        <p>Melde dich jetzt für unseren leckeren Newsletter an!</p>
+
+        <form method="post" action="{{ path('bg_newsletter_subscribe') }}" class="form-inline" role="form">
+
+            <fieldset class="form-group">
+                <label class="sr-only" for="email">E-Mail</label>
+                <input type="email" class="form-control input-lg" name="newsletter_subscribe[email]" id="email"
+                       placeholder="name@domain.de" required>
+            </fieldset>
+            <button type="submit" class="btn btn-lg btn-success">Genießer klicken hier!</button>
+            {{ form_row(form._token) }}
+        </form>
+
+    </article>
+{% endblock content %}

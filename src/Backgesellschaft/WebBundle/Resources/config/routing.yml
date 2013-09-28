@@ -1,0 +1,39 @@
+# Static pages
+bg_index:
+    path: /
+    methods:  [GET]
+    defaults:
+        _controller: backgesellschaft.web.controller.web:indexAction
+
+bg_newsletter_subscribe:
+    path: /newsletter/subscribe
+    methods: [POST]
+    defaults:
+        _controller: backgesellschaft.web.controller.newsletter:subscribeAction
+
+bg_newsletter_ok:
+    path: /newsletter/ok
+    methods: [GET]
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: 'BackgesellschaftWebBundle:Newsletter:ok.html.twig'
+
+bg_newsletter_already_subscribed:
+    path: /newsletter/schon-drin
+    methods: [GET]
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: 'BackgesellschaftWebBundle:Newsletter:already_subscribed.html.twig'
+
+bg_newsletter_confirm:
+    path: /newsletter/confirm/{id}/{key}
+    methods: [GET]
+    defaults:
+        _controller: backgesellschaft.web.controller.newsletter:confirmAction
+
+bg_newsletter_confirmed:
+    path: /newsletter/aktiviert
+    methods: [GET]
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: 'BackgesellschaftWebBundle:Newsletter:activated.html.twig'

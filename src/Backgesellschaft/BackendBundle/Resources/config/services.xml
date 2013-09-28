@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="Backgesellschaft.backend.newsletterservice.class">Backgesellschaft\BackendBundle\Service\Newsletter</parameter>
+        <parameter key="Backgesellschaft.backend.mailservice.class">Backgesellschaft\BackendBundle\Service\Mail</parameter>
+    </parameters>
+    <services>
+    <service id="Backgesellschaft.backend.newsletterservice" class="%Backgesellschaft.backend.newsletterservice.class%">
+        <argument type="service" id="command_bus"/>
+        <argument type="service" id="router"/>
+        <tag name="lite_cqrs.command_handler"/>
+    </service>
+    <service id="Backgesellschaft.backend.mailservice" class="%Backgesellschaft.backend.mailservice.class%">
+        <argument type="service" id="mailer"/>
+        <argument>%mail_from_email%</argument>
+        <argument>%mail_from_name%</argument>
+        <argument>%locale%</argument>
+        <tag name="lite_cqrs.command_handler"/>
+    </service>
+</services>
+</container>

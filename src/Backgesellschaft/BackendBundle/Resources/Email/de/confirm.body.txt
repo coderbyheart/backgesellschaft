@@ -1,0 +1,10 @@
+Hallo,
+
+bitte bestätige deine Anmeldung zum Newsletter der Backgesellschaft
+indem Du auf diesen Link klickst:
+
+{{ confirmation_link }}
+
+Vielen Dank!
+
+Deine Backgesellen
