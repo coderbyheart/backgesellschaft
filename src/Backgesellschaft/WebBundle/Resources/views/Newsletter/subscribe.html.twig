@@ -1,5 +1,25 @@
 {% extends "BackgesellschaftWebBundle::page.html.twig" %}
 {% block content %}
-    <h1>Anmeldung zum<br>BarCamp RheinMain <strong>Newsletter</strong></h1>
-    {{ form(form) }}
+
+    <article class="container">
+
+        <div class="page-header">
+            <h2>Backletter</h2>
+        </div>
+
+        <p class="lead">Melde dich jetzt für unseren leckeren <em>Backletter</em> an!</p>
+
+        <form method="post" action="{{ path('bg_newsletter_subscribe') }}" class="form-inline" role="form">
+
+            <fieldset class="form-group">
+                <label class="sr-only" for="email">E-Mail</label>
+                <input type="email" class="form-control input-lg" name="newsletter_subscribe[email]" id="email"
+                       placeholder="name@domain.de" required>
+            </fieldset>
+            <button type="submit" class="btn btn-lg btn-success">Genießer klicken hier!</button>
+            {{ form_row(form._token) }}
+        </form>
+
+    </article>
+
 {% endblock content %}

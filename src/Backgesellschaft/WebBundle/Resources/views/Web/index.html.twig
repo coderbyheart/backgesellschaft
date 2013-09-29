@@ -1,22 +1,56 @@
 {% extends "BackgesellschaftWebBundle::page.html.twig" %}
 {% block content %}
-    <article class="jumbotron">
-        <h1>{{ claim }}</h1>
 
-        <p class="lead">Wir <em>backen</em> da an was …</p>
+    <div class="stage">
 
-        <p>Melde dich jetzt für unseren leckeren Newsletter an!</p>
+        <div class="container">
 
-        <form method="post" action="{{ path('bg_newsletter_subscribe') }}" class="form-inline" role="form">
+            {# Slider #}
+            <div class="carousel slide" data-interval="5000" id="slider">
+                <ol class="carousel-indicators">
+                    <li data-target="#slider" data-slide-to="0" class="active"></li>
+                    <li data-target="#slider" data-slide-to="1"></li>
+                    <li data-target="#slider" data-slide-to="2"></li>
+                </ol>
 
-            <fieldset class="form-group">
-                <label class="sr-only" for="email">E-Mail</label>
-                <input type="email" class="form-control input-lg" name="newsletter_subscribe[email]" id="email"
-                       placeholder="name@domain.de" required>
-            </fieldset>
-            <button type="submit" class="btn btn-lg btn-success">Genießer klicken hier!</button>
-            {{ form_row(form._token) }}
-        </form>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="{{ asset('bundles/backgesellschaftweb/img/gebacken.jpg') }}"
+                             alt="Bestellen, backen, fertig!">
 
-    </article>
+                        <div class="carousel-caption">
+                            Bestellen, backen, fertig!
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{ asset('bundles/backgesellschaftweb/img/team.jpg') }}"
+                             alt="Wir mischen dein Küchenregal auf.">
+
+                        <div class="carousel-caption">
+                            Wir mischen dein Küchenregal auf.
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{ asset('bundles/backgesellschaftweb/img/qualitaet.jpg') }}"
+                             alt="Ist ökö, sieht schön aus und macht Sinn. (Auch als Geschenk.)">
+
+                        <div class="carousel-caption">
+                            Ist ökö, sieht schön aus und macht Sinn.<br>
+                            <small>{Auch als Geschenk}</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#slider" data-slide="prev">
+                    <span class="icon-prev"></span>
+                </a>
+                <a class="right carousel-control" href="#slider" data-slide="next">
+                    <span class="icon-next"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
 {% endblock content %}

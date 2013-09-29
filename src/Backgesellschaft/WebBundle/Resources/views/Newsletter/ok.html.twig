@@ -1,11 +1,15 @@
 {% extends "BackgesellschaftWebBundle::page.html.twig" %}
 {% block content %}
-    <article class="jumbotron">
-        <h1>Eingetütet!</h1>
+    <article class="container">
 
-        <p class="lead">Deine Anmeldung war erfolgreich.</p>
+        <div class="page-header">
+            <h2>Eingetütet!</h2>
+        </div>
 
-        <p>Bitte bestätige nun deine Anmeldung, indem Du den Link anklickst, den wir an deine E-Mail-Adresse geschickt haben. Geduld, das kann bis zu 5 Minuten dauern.</p>
+        <div class="alert alert-success">
+            <p class="lead">Deine Anmeldung war erfolgreich.</p>
+            <p>Bitte bestätige nun deine Anmeldung, indem Du den Link anklickst, den wir an deine E-Mail-Adresse geschickt haben.<br>Geduld, das kann bis zu 5 Minuten dauern.</p>
+        </div>
 
     </article>
 {% endblock content %}

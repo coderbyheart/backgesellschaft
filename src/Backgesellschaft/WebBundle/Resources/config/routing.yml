@@ -6,8 +6,8 @@ bg_index:
         _controller: backgesellschaft.web.controller.web:indexAction
 
 bg_newsletter_subscribe:
-    path: /newsletter/subscribe
-    methods: [POST]
+    path: /newsletter/anmelden
+    methods: [GET,POST]
     defaults:
         _controller: backgesellschaft.web.controller.newsletter:subscribeAction
 

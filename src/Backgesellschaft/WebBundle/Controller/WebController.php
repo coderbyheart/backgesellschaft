@@ -41,7 +41,7 @@ class WebController
     {
         $form             = $this->formFactory->create(new NewsletterSubscribeType());
         return array(
-            'form' => $form->createView()
+            'newsletter_form' => $form->createView()
         );
     }
 }
