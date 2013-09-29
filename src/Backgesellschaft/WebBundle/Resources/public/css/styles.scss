@@ -9,18 +9,55 @@ html {
   background-color: $grey;
 }
 
-.navbar-default {
-  .navbar-brand {
-    color: #fff;
-  }
-  .navbar-toggle {
-    border-color: #fff;
-    .icon-bar {
-      background-color: #fff;
+header {
+  .navbar-default {
+    .navbar-header {
+      @extend .dosis;
+      background-color: $red;
+      margin: 0;
+      .navbar-brand {
+        padding-bottom: 5px;
+        color: #fff;
+        .logo {
+          display: none;
+        }
+        .icon {
+          padding-right: 5px;
+        }
+      }
+    }
+    .navbar-header.logo {
+      background-color: transparent;
+      .navbar-brand {
+        .icon, .name {
+          display: none;
+        }
+        .logo {
+          display: inline;
+          position: absolute;
+          top: 0;
+          left: 35px;
+        }
+        width: (170px + 35px*2);
+        background-color: transparent;
+      }
+    }
+
+    .navbar-toggle {
+      border-color: #fff;
+      .icon-bar {
+        background-color: #fff;
+      }
+    }
+    .navbar-toggle:hover, .navbar-toggle:focus {
+      background-color: darken($red, 10);
     }
   }
-  .navbar-toggle:hover, .navbar-toggle:focus {
-    background-color: darken($red, 10);
+
+  .navbar-collapse {
+    ul {
+      padding: 0;
+    }
   }
 }
 
@@ -41,19 +78,6 @@ html {
     -1px 0 2px rgba(0, 0, 0, 0.6);
   small {
     font-weight: normal;
-  }
-}
-
-header {
-  h1 {
-    @extend .dosis;
-    background-color: $red;
-    margin: 0;
-  }
-  .navbar-collapse {
-    ul {
-      padding: 0;
-    }
   }
 }
 
