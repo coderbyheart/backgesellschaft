@@ -26,22 +26,6 @@ header {
         }
       }
     }
-    .navbar-header.logo {
-      background-color: transparent;
-      .navbar-brand {
-        .icon, .name {
-          display: none;
-        }
-        .logo {
-          display: inline;
-          position: absolute;
-          top: 0;
-          left: 35px;
-        }
-        width: (170px + 35px*2);
-        background-color: transparent;
-      }
-    }
 
     .navbar-toggle {
       border-color: #fff;
@@ -129,6 +113,26 @@ header {
 @media screen and (min-width: 768px) {
   body {
     padding-top: 50px;
+  }
+  header {
+    .navbar-default {
+      .navbar-header.logo {
+        background-color: transparent;
+        .navbar-brand {
+          .icon, .name {
+            display: none;
+          }
+          .logo {
+            display: inline;
+            position: absolute;
+            top: 0;
+            left: 35px;
+          }
+          width: (170px + 35px*2);
+          background-color: transparent;
+        }
+      }
+    }
   }
 }
 
