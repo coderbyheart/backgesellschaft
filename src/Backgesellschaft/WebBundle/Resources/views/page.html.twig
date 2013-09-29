@@ -5,7 +5,7 @@
     <title>{{ title|default(default_title) }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <link href="http://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Dosis:400,500" rel="stylesheet" type="text/css">
     {% stylesheets filter="yui_css,cssrewrite"
     "bundles/backgesellschaftweb/css/styles.scss" %}
     <link href="{{ asset_url }}" type="text/css" rel="stylesheet"/>
@@ -13,47 +13,48 @@
 </head>
 <body>
 <div id="fb-root"></div>
-<header>
-    <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
-        <h1 class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ path('bg_index') }}">{{ org }}</a>
-        </h1>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Backmischungen</a></li>
-                <li><a href="#about">Backen aus Überzeugung</a></li>
-                <li><a href="{{ path('bg_newsletter_subscribe') }}">Backletter</a></li>
-                <li><a href="#contact">Kontakt</a></li>
-            </ul>
-        </div>
-        <!-- /.nav-collapse -->
-    </nav>
-    <!-- /.navbar -->
+<header class="container">
+    <div class="row">
+        <nav class="navbar navbar-default" role="navigation">
+            <h1 class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('bg_index') }}">{{ org }}</a>
+            </h1>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Backmischungen</a></li>
+                    <li><a href="#about">Backen aus Überzeugung</a></li>
+                    <li><a href="{{ path('bg_newsletter_subscribe') }}">Backletter</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <!-- /.nav-collapse -->
+        </nav>
+        <!-- /.navbar -->
+    </div>
 </header>
 
 {% block content %}
 {% endblock %}
 
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <h2>Folge uns auf Facebook</h2>
+<footer class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h2>Folge uns auf Facebook</h2>
 
-                <div class="fb-like-box" data-href="https://www.facebook.com/Backgesellschaft" data-width="292"
-                     data-height="300"
-                     data-show-faces="true"
-                     data-stream="false"
-                     data-colorscheme="dark"
-                     data-show-border="false"
-                     data-header="false"></div>
-            </div>
-            {% if newsletter_form is defined %}
+            <div class="fb-like-box" data-href="https://www.facebook.com/Backgesellschaft" data-width="292"
+                 data-height="300"
+                 data-show-faces="true"
+                 data-stream="false"
+                 data-colorscheme="light"
+                 data-show-border="false"
+                 data-header="false"></div>
+        </div>
+        {% if newsletter_form is defined %}
             <div class="col-lg-6">
                 <h2>Backletter</h2>
 
@@ -70,8 +71,7 @@
                     {{ form_row(newsletter_form._token) }}
                 </form>
             </div>
-            {% endif %}
-        </div>
+        {% endif %}
     </div>
 </footer>
 {% block javascript %}
@@ -90,12 +90,19 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-44438762-1', 'backgesellschaft.de');
-      ga('send', 'pageview');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-44438762-1', 'backgesellschaft.de');
+        ga('send', 'pageview');
     </script>
 {% endblock %}
 </body>
