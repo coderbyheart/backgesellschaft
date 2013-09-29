@@ -37,3 +37,10 @@ bg_newsletter_confirmed:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: 'BackgesellschaftWebBundle:Newsletter:activated.html.twig'
+
+bg_contact:
+    path: /kontakt
+    methods: [GET]
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: 'BackgesellschaftWebBundle:Static:contact.html.twig'
