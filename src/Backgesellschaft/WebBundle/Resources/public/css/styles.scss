@@ -63,21 +63,66 @@ header {
 
 .container.carousel {
   padding: 0;
+  margin-bottom: 4em;
+  .carousel-caption {
+    @extend .dosis;
+    font-weight: 500;
+    font-size: 2.5em;
+    text-align: left;
+    line-height: 110%;
+    left: 5%;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 1px 1px 2px rgba(0, 0, 0, 0.6), 1px 0 2px rgba(0, 0, 0, 0.6),
+      0 -1px 2px rgba(0, 0, 0, 0.6),
+      -1px -1px 2px rgba(0, 0, 0, 0.6),
+      -1px 0 2px rgba(0, 0, 0, 0.6);
+    small {
+      font-weight: normal;
+    }
+  }
 }
 
-.carousel-caption {
-  @extend .dosis;
-  font-weight: 500;
-  font-size: 2.5em;
-  text-align: left;
-  line-height: 110%;
-  left: 5%;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 1px 1px 2px rgba(0, 0, 0, 0.6), 1px 0 2px rgba(0, 0, 0, 0.6),
-    0 -1px 2px rgba(0, 0, 0, 0.6),
-    -1px -1px 2px rgba(0, 0, 0, 0.6),
-    -1px 0 2px rgba(0, 0, 0, 0.6);
-  small {
-    font-weight: normal;
+.product {
+  background: transparent url(../img/vichi-muster_20.png);
+  padding: 33px;
+  margin-bottom: 2em;
+  position: relative;
+  img {
+    width: 100%;
+  }
+  .purchase {
+    @extend .dosis;
+    font-weight: bold;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    .price {
+      display: inline-block;
+      float: left;
+      font-size: 5em;
+    }
+    input[type=number], .x {
+      display: none;
+    }
+  }
+}
+
+.product.selected {
+  .purchase {
+    input[type=number] {
+      float: left;
+      width: 75px;
+      margin-top: 40px;
+      display: inline;
+    }
+    .x {
+      float: left;
+      line-height: 35px;
+      font-size: 2em;
+      margin-top: 40px;
+      display: inline;
+    }
   }
 }
 
